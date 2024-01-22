@@ -44,11 +44,7 @@ class TorchTrain:
         return self.model.forward(torch.tensor(X)).detach()
 
     def train(
-        self,
-        data,
-        learning_rate,
-        max_epochs=500,
-        log_fn=default_log_fn,
+        self, data, learning_rate, max_epochs=500, log_fn=default_log_fn,
     ):
         self.model = Network(self.hidden_layers)
         self.max_epochs = max_epochs
@@ -56,7 +52,6 @@ class TorchTrain:
 
         losses = []
         for epoch in range(1, max_epochs + 1):
-
             # Forward
             out = model.forward(torch.tensor(data.X, requires_grad=True)).view(data.N)
             y = torch.tensor(data.y)
